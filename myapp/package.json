@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "antd": "^4.7.3",
     "antd-mobile": "^2.3.4",
     "axios": "^0.21.0",
     "crypto-js": "^4.0.0",
@@ -46,5 +47,9 @@
     "customize-cra": "^1.0.0",
     "react-app-rewired": "^2.1.6",
     "react-router-dom": "^5.2.0"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "config-overrides.js",
+  "author": "",
+  "license": "ISC"
 }
