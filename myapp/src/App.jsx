@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, useHistory, useLocation, useRouteMatch, useParams, Route } from 'react-router-dom';
+import { withRouter, useHistory, useLocation, useRouteMatch, useParams, Route, Switch, Redirect } from 'react-router-dom';
 import logo from '@/logo.svg';
 import './App.scss';
 import "./common/reset.css"
@@ -19,8 +19,6 @@ import 'antd-mobile/dist/antd-mobile.css';
 function App(props) {
   const history = useHistory();
   console.log("history", history)
-  console.log("app.props", props)
-
   const menu = [
     {
       text: '首页',
@@ -72,40 +70,45 @@ function App(props) {
       component: Classify,
     },
   ];
-  current: '/home';
-  changeMenu = ({ key }) => {
-    this.props.history.push(key);
-    this.setState({
-      current: key
-    })
-  }
+  //实现高亮
+  let current = '/home'
+  // const changeMenu = ({ key }) => {
+  //   history.push(key);
+  //   current = key
+  // }
   return (
     <div className="App">
-      {/* <Row style={{ backgroundColor: '#001529', lineHeight: '46px' }}>
-        <Col span={18}> */}
-      <Menu mode="horizontal" onClick={this.changeMenu} selectedKeys={[current]}>
+      {/* <Menu mode="horizontal" onClick={changeMenu} selectedKeys={[current]}>
         {
           menu.map(item => <Menu.Item
             key={item.path}
-            icon={item.icon}
             title={item.text}
           >{item.text}</Menu.Item>)
         }
-      </Menu>
-      {/* </Col>
-      </Row> */}
+      </Menu> */}
+      {/* <Menu
+        className="foo-menu"
+        data={initData}
+        value={['1', '3']}
+        onChange={this.onChange}
+        height={document.documentElement.clientHeight * 0.6}
+      /> */}
       <Switch>
-        {
+        {/* {
           menu.map(item => <Route key={item.name} path={item.path} component={item.component} />)
-        }
-        <Route path='home' component={Home} />
-        <Route path='menu' component={Menu} />
-        <Route path='type' component={Type} />
-        <Route path='video' component={Video} />
-        <Route path='reg' component={Reg} />
-        <Route path='login' component={Login} />
-        <Route path='mine' component={Mine} />
-
+        } */}
+        <Route path='/home' component={Home} />
+        <Route path='/menu' component={Menu} />
+        <Route path='/type' component={Type} />
+        <Route path='/video' component={Video} />
+        <Route path='/reg' component={Reg} />
+        <Route path='/login' component={Login} />
+        <Route path='/mine' component={Mine} />
+        <Route path="/notfound" render={() => <div>404</div>}></Route>
+        {/* 重定向 有3个属性from to  exact*/}
+        <Redirect from='/' to='/home' exact />
+        {/* 如果匹配不成功就跳到这里 */}
+        <Redirect to="/notfound" />
       </Switch>
     </div>
   );
