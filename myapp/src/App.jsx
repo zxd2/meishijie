@@ -12,6 +12,7 @@ import Reg from './views/Reg'
 import Type from './views/Type'
 import Video from './views/Video'
 import Classify from './views/Classify'
+import Detail from './views/Detail'
 import { Layout, Menu, Row, Col, Button, } from 'antd-mobile';
 
 import 'antd-mobile/dist/antd-mobile.css';
@@ -69,6 +70,12 @@ function App(props) {
       name: 'classify',
       component: Classify,
     },
+    {
+      text: '详细',
+      path: '/detail',
+      name: 'detail',
+      component: Detail,
+    },
   ];
   //实现高亮
   let current = '/home'
@@ -105,6 +112,7 @@ function App(props) {
         <Route path='/login' component={Login} />
         <Route path='/mine' component={Mine} />
         <Route path='/classify' component={Classify} />
+        <Route path='/detail' component={Detail} />
         <Route path="/notfound" render={() => <div>404</div>}></Route>
         {/* 重定向 有3个属性from to  exact*/}
         <Redirect from='/' to='/home' exact />
