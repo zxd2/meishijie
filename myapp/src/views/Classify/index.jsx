@@ -7,7 +7,7 @@ import request from '../../utils/request'
 
 const Classify = () => {
     const [datalist, changeData] = useState([])
-    const [listChild, changeChild] = useState([])
+    let [listChild, changeChild] = useState([])
     /* 
     ["实用分类", "每日三餐", "主食", "家常菜谱", "中华菜系", "各地小吃", "外国菜谱", "烘焙", "人群", "厨具", "场景", "疾病调理", "脏腑调理", "功能性调理", "工艺", "时间"]
     */
@@ -73,15 +73,14 @@ const Classify = () => {
     </List>);
     let docked = true;
     //弹性盒布局的
-    listChild.map((item, index) => {
-        const PlaceHolder = ({ className = '', ...restProps }) => (
-            <div className={`${className} placeholder`} {...restProps}>
-                <img src={item.缩略图1} alt="" />
-                <span>{item.字段11}</span>
-            </div>
-        )
-    });
+    const PlaceHolder = ({ className = '', ...restProps }) => (
+        <div className={`${className} placeholder`} {...restProps}>
+            {/* {console.log("...restProps", restProps)} */}
+            <img src={restProps.image} alt="" />
+            <span>{restProps.beizhu}</span>
+        </div>
 
+    );
     //组件的渲染
     return (
         <div><Search style={{ position: "absolute", Zindex: "9999", width: 375 + "px", height: 72 + 'px', backgroundColor: "#fff" }}></Search>
@@ -96,7 +95,7 @@ const Classify = () => {
                 >
                     <Flex wrap="wrap">
                         {
-                            listChild.map((item, index) => <PlaceHolder key={index} className="inline" />)
+                            listChild.map((item, index) => <PlaceHolder key={index} beizhu={item.字段11} image={item.缩略图1} className="inline" />)
                         }
 
                     </Flex>
