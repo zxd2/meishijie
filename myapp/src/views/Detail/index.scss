@@ -1,0 +1,47 @@
+@import "../../common/sass/vw.scss";
+
+.am-navbar{
+    width: 100%;
+    height: 60px!important;
+    padding: vw(15),0;
+    display: flex;
+    justify-content: space-between;
+ .am-navbar-left{
+    width:34px;
+    padding-left: 0;
+    .image {
+        width: vw(78);
+        height: vw(40);
+    }
+}
+.am-navbar-title {
+    flex: 3;
+    .am-search{
+        width: 100%;
+        background-color: #fff;
+        padding: 0;
+        .am-search-input{
+            height: vw(40);
+            line-height: vw(40);
+            // display: flex;
+            // align-items: center;
+            // justify-content: center;
+        .am-search-synthetic-ph{
+            line-height: vw(40);
+            color: #fff;
+        }    
+        .am-search-value{
+            padding-right: 0 !important;
+            background-color: #efeff4;
+            height: vw(40);
+            padding-left: vw(32);
+            // background-color: transparent;
+        }
+    }
+    }
+}
+.am-navbar-right {
+   margin-right: 0;
+
+}
+}
