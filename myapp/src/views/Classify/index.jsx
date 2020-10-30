@@ -67,8 +67,13 @@ const Classify = () => {
     const history = useHistory();
     console.log("history", history)
 
-    const goto = (path) => {
-        history.push(path)
+    const goto = (path, smalltitle) => {
+        history.push(
+            {
+                pathname: path,
+                state: smalltitle
+            })
+        console.log("smalltitle", smalltitle)
     }
 
     const sidebar = (<List>
@@ -88,7 +93,7 @@ const Classify = () => {
     let docked = true;
     //弹性盒布局的
     const PlaceHolder = ({ className = '', ...restProps }) => (
-        <div className={`${className} placeholder`} {...restProps} onClick={goto.bind(null, '/detail')}>
+        <div className={`${className} placeholder`} {...restProps} onClick={goto.bind(null, '/detail', restProps.beizhu)}>
             {console.log("...restProps", restProps)}
             <img src={restProps.image} alt="" />
             <span>{restProps.beizhu}</span>
