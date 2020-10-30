@@ -1,30 +1,26 @@
 import React from 'react';
-import { Route, Redirect, Switch, Link, NavLink, withRouter } from 'react-router-dom';
+import { withRouter, useHistory, useLocation, useRouteMatch, useParams, Route, Switch, Redirect } from 'react-router-dom';
 import logo from '@/logo.svg';
 import './App.scss';
-import { TabBar } from 'antd-mobile';
-import Home from '../src/views/Home';
-import myme from '../src/views/Myme/index'
+import "./common/reset.css"
+
+import Home from '../src/views/Home'
 import Login from '../src/views/Login'
-import menU from '../src/views/Menu/index'
-import Mine from '../src/views/Mime'
+import Menua from '../src/views/Menua'
+import Mine from '../src/views/Mine'
 import Reg from '../src/views/Reg'
 import Type from '../src/views/Type'
 import Video from '../src/views/Video'
-import Classify from '../src/views/classify/classify'
+import Classify from './views/Classify'
+import { Layout, Menu, Row, Col, Button, } from 'antd-mobile';
 
-
-@withRouter
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-   
-  }
-  state = {
-    // selectedTab: 'redTab',
-    // hidden: false,
-    // fullScreen: false,
-    menu: [{
+import 'antd-mobile/dist/antd-mobile.css';
+// console.log(logo)
+function App(props) {
+  const history = useHistory();
+  console.log("history", history)
+  const menu = [
+    {
       text: '首页',
       path: '/home',
       name: 'home',
@@ -33,28 +29,33 @@ class App extends React.Component {
     },
     {
       text: '菜单',
-      path: '/menu',
-      name: 'menu',
-      component: menU,
+      path: '/menua',
+      name: 'menua',
+      component: Menua,
     },
-
+    {
+      text: '类型',
+      path: '/type',
+      name: 'type',
+      component: Type,
+    },
     {
       text: '视频',
       path: '/video',
       name: 'video',
       component: Video,
     },
-    //   {
-    //       text: '登录',
-    //       path: '/login',
-    //       name: 'login',
-    //       component: Login
-    //   }, {
-    //       text: '注册',
-    //       path: '/reg',
-    //       name: 'reg',
-    //       component: Reg
-    //   }, 
+    {
+      text: '登录',
+      path: '/login',
+      name: 'login',
+      component: Login
+    }, {
+      text: '注册',
+      path: '/reg',
+      name: 'reg',
+      component: Reg
+    },
     {
       text: '我的',
       path: '/mine',
@@ -63,30 +64,54 @@ class App extends React.Component {
 
     },
     {
-      text: '我的菜单',
-      path: '/myme',
-      name: 'myme',
-      component: myme,
-
-    },
-    {
       text: '分类',
       path: '/classify',
       name: 'classify',
       component: Classify,
-
     },
-
-    ],
-
-    current: '/home'
-  }
-  changeMenu = ({key})=>{
-   
-    this.props.history.push(key);
-    this.setState({
-        current:key
-    })
+  ];
+  //实现高亮
+  let current = '/home'
+  // const changeMenu = ({ key }) => {
+  //   history.push(key);
+  //   current = key
+  // }
+  return (
+    <div className="App">
+      {/* <Menu mode="horizontal" onClick={changeMenu} selectedKeys={[current]}>
+        {
+          menu.map(item => <Menu.Item
+            key={item.path}
+            title={item.text}
+          >{item.text}</Menu.Item>)
+        }
+      </Menu> */}
+      {/* <Menu
+        className="foo-menu"
+        data={initData}
+        value={['1', '3']}
+        onChange={this.onChange}
+        height={document.documentElement.clientHeight * 0.6}
+      /> */}
+      <Switch>
+        {/* {
+          menu.map(item => <Route key={item.name} path={item.path} component={item.component} />)
+        } */}
+        <Route path='/home' component={Home} />
+        <Route path='/menu' component={Menu} />
+        <Route path='/type' component={Type} />
+        <Route path='/video' component={Video} />
+        <Route path='/reg' component={Reg} />
+        <Route path='/login' component={Login} />
+        <Route path='/mine' component={Mine} />
+        <Route path="/notfound" render={() => <div>404</div>}></Route>
+        {/* 重定向 有3个属性from to  exact*/}
+        <Redirect from='/' to='/home' exact />
+        {/* 如果匹配不成功就跳到这里 */}
+        <Redirect to="/notfound" />
+      </Switch>
+    </div>
+  );
 }
 goto = (path)=>{
     this.props.history.push(path);    
