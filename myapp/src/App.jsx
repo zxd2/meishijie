@@ -12,6 +12,7 @@ import Reg from './views/Reg'
 import Type from './views/Type'
 import Video from './views/Video'
 import Classify from './views/Classify'
+import Detail from './views/Detail'
 import Msg from '../src/views/Mine/msg';
 import Issue from '../src/views/Mine/issue';
 import Collection from '../src/views/Mine/collection';
@@ -83,7 +84,7 @@ function App(props) {
   //   history.push(key);
   //   current = key
   // }
-  
+
   return (
     <div className="App">
       {/* <Menu mode="horizontal" onClick={changeMenu} selectedKeys={[current]}>
@@ -112,16 +113,13 @@ function App(props) {
         <Route path='/reg' component={Reg} />
         <Route path='/login' component={Login} />
         <Route path='/mine' component={Mine} />
-<<<<<<< HEAD
-        <Route path='/shop' component={Shop} />
+        {/* <Route path='/shop' component={Shop} /> */}
         <Route path='/msg' component={Msg} />
         <Route path='/issue' component={Issue} />
         <Route path='/collection' component={Collection} />
         <Route path='/our' component={Our} />
-=======
         <Route path='/classify' component={Classify} />
         <Route path='/detail' component={Detail} />
->>>>>>> 9cf9c70386c5c5e80d5a5a6873a7181088b96270
         <Route path="/notfound" render={() => <div>404</div>}></Route>
         {/* 重定向 有3个属性from to  exact*/}
         <Redirect from='/' to='/home' exact />

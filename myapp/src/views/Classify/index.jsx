@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState, useLayoutEffect } from 'react';
 import { useHistory } from 'react-router-dom'
 import { AppstoreOutlined, ScissorOutlined, CoffeeOutlined, AppleOutlined, ChromeOutlined, PieChartOutlined, RadarChartOutlined, DeleteOutlined, BgColorsOutlined, DashboardOutlined, UserOutlined, HeartOutlined } from '@ant-design/icons'
-import { Drawer, List, Flex } from 'antd-mobile';
+import { Drawer, List, Flex, SearchBar } from 'antd-mobile';
 import "./index.scss"
-import Search from "../../components/search/search";
+// import Search from "../../components/search/search";
 import request from '../../utils/request'
 
 const Classify = () => {
@@ -100,10 +100,28 @@ const Classify = () => {
         </div>
 
     );
-    // onClick={goto('/detail')}
+    let [value, changeValue] = useState('')
+    const onChange = (value) => {
+        changeValue(value)
+        console.log("value", value)
+    };
     //组件的渲染
     return (
-        <div><Search style={{ position: "absolute", Zindex: "9999", width: 375 + "px", height: 72 + 'px', backgroundColor: "#fff" }}></Search>
+        <div className="classifyNav">{
+            // <Search style={{ position: "absolute", Zindex: "9999", width: 375 + "px", height: 72 + 'px', backgroundColor: "#fff" }}></Search>
+        }
+            <SearchBar
+                // value={value}
+                placeholder="搜索百万免费菜谱"
+                onSubmit={value => console.log(value, 'onSubmit')}
+                onClear={value => console.log(value, 'onClear')}
+                onFocus={() => console.log('onFocus')}
+                onBlur={() => console.log('onBlur')}
+                onCancel={() => history.push('/classify')}
+                cancelText
+                showCancelButton
+                onChange={(value) => { onChange(value) }}
+            />
             <div style={{ height: '100%' }}>
                 <Drawer
                     className="my-drawer"
