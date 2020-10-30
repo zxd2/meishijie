@@ -6,12 +6,12 @@ import "./common/reset.css"
 
 import Home from '../src/views/Home'
 import Login from '../src/views/Login'
-import Menua from '../src/views/Menua'
+import Menua from '../src/views/Menua/index'
 import Mine from '../src/views/Mine'
 import Reg from '../src/views/Reg'
 import Type from '../src/views/Type'
 import Video from '../src/views/Video'
-import Classify from './views/Classify'
+import Classify from '../src/views/classify/classify'
 import { Layout, Menu, Row, Col, Button, } from 'antd-mobile';
 
 import 'antd-mobile/dist/antd-mobile.css';
@@ -76,6 +76,7 @@ function App(props) {
   //   history.push(key);
   //   current = key
   // }
+  
   return (
     <div className="App">
       {/* <Menu mode="horizontal" onClick={changeMenu} selectedKeys={[current]}>
@@ -113,123 +114,123 @@ function App(props) {
     </div>
   );
 }
-goto = (path)=>{
-    this.props.history.push(path);    
-}   
-UNSAFE_componentWillMount(){
-    // history,location,match
-    const {pathname} = this.props.location;
-    console.log('this.props=',this.props)
-    console.log(pathname)
-    this.setState({
-        current:pathname
-    })
-}
-  renderContent(pageText) {
+// goto = (path)=>{
+//     this.props.history.push(path);    
+// }   
+// UNSAFE_componentWillMount(){
+//     // history,location,match
+//     const {pathname} = this.props.location;
+//     console.log('this.props=',this.props)
+//     console.log(pathname)
+//     this.setState({
+//         current:pathname
+//     })
+// }
+//   renderContent(pageText) {
 
-    return (
-      <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
-        <div style={{ paddingTop: 60 }}>Clicked “{pageText}” tab， show “{pageText}” information</div>
-        <a style={{ display: 'block', marginTop: 40, marginBottom: 20, color: '#108ee9' }}
-          onClick={(e) => {
-            e.preventDefault();
-            this.setState({
-              hidden: !this.state.hidden,
-            });
-          }}
-        >
-          Click to show/hide tab-bar
-        </a>
-        <a style={{ display: 'block', marginBottom: 600, color: '#108ee9' }}
-          onClick={(e) => {
-            e.preventDefault();
-            this.setState({
-              fullScreen: !this.state.fullScreen,
-            });
-          }}
-        >
-          Click to switch fullscreen
-        </a>
-      </div>
+//     return (
+//       <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
+//         <div style={{ paddingTop: 60 }}>Clicked “{pageText}” tab， show “{pageText}” information</div>
+//         <a style={{ display: 'block', marginTop: 40, marginBottom: 20, color: '#108ee9' }}
+//           onClick={(e) => {
+//             e.preventDefault();
+//             this.setState({
+//               hidden: !this.state.hidden,
+//             });
+//           }}
+//         >
+//           Click to show/hide tab-bar
+//         </a>
+//         <a style={{ display: 'block', marginBottom: 600, color: '#108ee9' }}
+//           onClick={(e) => {
+//             e.preventDefault();
+//             this.setState({
+//               fullScreen: !this.state.fullScreen,
+//             });
+//           }}
+//         >
+//           Click to switch fullscreen
+//         </a>
+//       </div>
       
-    );
-  }
+//     );
+//   }
   
-  render() {console.log('App.props',this.props);
-    const { menu, current } = this.state;
-    console.log(menu,current)
-    return (
+//   render() {
+//     const { menu, current } = this.state;
+//     console.log(menu,current)
+//     return (
       
-        <div>
-      <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
+//         <div>
+//       <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
 
-        <TabBar
-          unselectedTintColor="#949494"
-          tintColor="#33A3F4"
-          barTintColor="white"
-          hidden={this.state.hidden}
-        >
-          {
-            menu.map((item) => <TabBar.Item
-              title={item.text}
-              key={item.name}
+//         <TabBar
+//           unselectedTintColor="#949494"
+//           tintColor="#33A3F4"
+//           barTintColor="white"
+//           hidden={this.state.hidden}
+//         >
+//           {
+//             menu.map((item) => <TabBar.Item
+//               title={item.text}
+//               key={item.name}
               
              
-              to={item.path}
-              icon={<div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat'
-              }}
-              />
-              }
-              selectedIcon={<div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat'
-              }}
-              />
-              }
-              selected={this.state.selectedTab === 'blueTab'}
+//               to={item.path}
+//               icon={<div style={{
+//                 width: '22px',
+//                 height: '22px',
+//                 background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat'
+//               }}
+//               />
+//               }
+//               selectedIcon={<div style={{
+//                 width: '22px',
+//                 height: '22px',
+//                 background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat'
+//               }}
+//               />
+//               }
+//               selected={this.state.selectedTab === 'blueTab'}
 
-              onPress={() => {
-                this.setState({
-                  selectedTab: 'blueTab',
-                });
-              }}
-              data-seed="logId"
-            >
-              {this.renderContent('sh')}
-            </TabBar.Item>)
-          }
+//               onPress={() => {
+//                 this.setState({
+//                   selectedTab: 'blueTab',
+//                 });
+//               }}
+//               data-seed="logId"
+//             >
+//               {this.renderContent('sh')}
+//             </TabBar.Item>)
+//           }
 
 
 
-        </TabBar>
+//         </TabBar>
         
-        </div>
+//         </div>
       
-      <Switch>
-                 {
-                     menu.map(item => <Route key={item.name} path={item.path} component={item.component} />)
-                 }
-                <Route path='/home' component={Home} />
-                <Route path='/myme/:id' component={myme} />
-                <Route path='/menu' component={menU} />
-                <Route path='/type' component={Type} />
-                <Route path='/video' component={Video} />
-                <Route path='/reg' component={Reg} />
-                <Route path='/login' component={Login} />
-                <Route path='/mine' component={Mine} />
-                <Route path='/classify' component={Classify} />
-                <Route path="/notfound" render={() => <div>404</div>} />
-                    <Redirect from='/' to='/home' exact />
+//       <Switch>
+//                  {
+//                      menu.map(item => <Route key={item.name} path={item.path} component={item.component} />)
+//                  }
+//                 <Route path='/home' component={Home} />
+//                 <Route path='/myme/:id' component={myme} />
+//                 <Route path='/menu' component={menU} />
+//                 <Route path='/type' component={Type} />
+//                 <Route path='/video' component={Video} />
+//                 <Route path='/reg' component={Reg} />
+//                 <Route path='/login' component={Login} />
+//                 <Route path='/mine' component={Mine} />
+//                 <Route path='/classify' component={Classify} />
+//                 <Route path="/notfound" render={() => <div>404</div>} />
+//                     <Redirect from='/' to='/home' exact />
 
-                </Switch>
-      </div>
-    );
-  }
-}
+//                 </Switch>
+//       </div>
+//     );
+//   }
+
 //   changeMenu = ({key})=>{
 //     this.props.history.push(key);
 //     this.setState({
