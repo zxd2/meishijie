@@ -4,18 +4,19 @@ import logo from '@/logo.svg';
 import './App.scss';
 import "./common/reset.css"
 
-import Home from '../src/views/Home'
-import Login from '../src/views/Login'
-import Menua from '../src/views/Menua'
-import Mine from '../src/views/Mine'
-import Reg from '../src/views/Reg'
-import Type from '../src/views/Type'
-import Video from '../src/views/Video'
+import Home from './views/Home'
+import Login from './views/Login'
+import Menua from './views/Menua'
+import Mine from './views/Mine'
+import Reg from './views/Reg'
+import Type from './views/Type'
+import Video from './views/Video'
 import Classify from './views/Classify'
+import Msg from '../src/views/Mine/msg';
+import Issue from '../src/views/Mine/issue';
+import Collection from '../src/views/Mine/collection';
+import Our from '../src/views/Mine/our';
 import { Layout, Menu, Row, Col, Button, } from 'antd-mobile';
-
-import 'antd-mobile/dist/antd-mobile.css';
-// console.log(logo)
 function App(props) {
   const history = useHistory();
   console.log("history", history)
@@ -69,6 +70,12 @@ function App(props) {
       name: 'classify',
       component: Classify,
     },
+    {
+      text: '详细',
+      path: '/detail',
+      name: 'detail',
+      component: Detail,
+    },
   ];
   //实现高亮
   let current = '/home'
@@ -76,6 +83,7 @@ function App(props) {
   //   history.push(key);
   //   current = key
   // }
+  
   return (
     <div className="App">
       {/* <Menu mode="horizontal" onClick={changeMenu} selectedKeys={[current]}>
@@ -104,6 +112,16 @@ function App(props) {
         <Route path='/reg' component={Reg} />
         <Route path='/login' component={Login} />
         <Route path='/mine' component={Mine} />
+<<<<<<< HEAD
+        <Route path='/shop' component={Shop} />
+        <Route path='/msg' component={Msg} />
+        <Route path='/issue' component={Issue} />
+        <Route path='/collection' component={Collection} />
+        <Route path='/our' component={Our} />
+=======
+        <Route path='/classify' component={Classify} />
+        <Route path='/detail' component={Detail} />
+>>>>>>> 9cf9c70386c5c5e80d5a5a6873a7181088b96270
         <Route path="/notfound" render={() => <div>404</div>}></Route>
         {/* 重定向 有3个属性from to  exact*/}
         <Redirect from='/' to='/home' exact />
