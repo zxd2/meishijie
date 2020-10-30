@@ -1,4 +1,5 @@
 @import "../../common/sass/vw.scss";
+
 .classifyNav{
 .am-search{
   width: 100%;
@@ -52,16 +53,12 @@
     padding-top: vw(10);
     -webkit-overflow-scrolling: touch;
   .am-list {
-    // background-color: #efeff4;
     padding: 0;
     padding-top: vw(40);
     height: 100%;
     // .am-list{
     // // height: 100%;
     .am-list-body{
-      &:first-child{
-        background-color: #fff;
-      }
     .am-list-item {
         width: vw(80);
         height: vw(70);
