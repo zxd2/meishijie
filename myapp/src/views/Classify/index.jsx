@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useLayoutEffect } from 'react';
+import { useHistory } from 'react-router-dom'
 import { AppstoreOutlined, ScissorOutlined, CoffeeOutlined, AppleOutlined, ChromeOutlined, PieChartOutlined, RadarChartOutlined, DeleteOutlined, BgColorsOutlined, DashboardOutlined, UserOutlined, HeartOutlined } from '@ant-design/icons'
 import { Drawer, List, Flex } from 'antd-mobile';
 import "./index.scss"
@@ -16,6 +17,11 @@ const Classify = () => {
     datalist.forEach((value, index) => {
         value.icon = iconlist[index]
     })
+    //请求第一页的数据
+    useLayoutEffect(function () {
+        changelist('实用分类')
+    }, [])
+    //请求列表的数据
     useEffect(async function () {
         try {
             const { data } = await request.get("/good/list", {
@@ -34,7 +40,7 @@ const Classify = () => {
         }
     }, [])
     console.log(datalist, "datalist")
-    //列表的小数据
+    //请求列表的小数据
     const changelist = useCallback(async function (item) {
         try {
             console.log("item", item)
@@ -57,6 +63,14 @@ const Classify = () => {
     console.log(listChild, "listChild")
 
 
+    //路由跳转
+    const history = useHistory();
+    console.log("history", history)
+
+    const goto = (path) => {
+        history.push(path)
+    }
+
     const sidebar = (<List>
         {
             datalist.map((i, index) => {
@@ -74,13 +88,14 @@ const Classify = () => {
     let docked = true;
     //弹性盒布局的
     const PlaceHolder = ({ className = '', ...restProps }) => (
-        <div className={`${className} placeholder`} {...restProps}>
-            {/* {console.log("...restProps", restProps)} */}
+        <div className={`${className} placeholder`} {...restProps} onClick={goto.bind(null, '/detail')}>
+            {console.log("...restProps", restProps)}
             <img src={restProps.image} alt="" />
             <span>{restProps.beizhu}</span>
         </div>
 
     );
+    // onClick={goto('/detail')}
     //组件的渲染
     return (
         <div><Search style={{ position: "absolute", Zindex: "9999", width: 375 + "px", height: 72 + 'px', backgroundColor: "#fff" }}></Search>
