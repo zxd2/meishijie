@@ -1,0 +1,200 @@
+@import '../../common/sass/vw.scss';
+
+.mytop {
+    width: vw(375);
+    height: vw(150);
+    padding-top: 40%;
+    background: url(https://s1.c.meishij.net/wap7/images/home_bgOnline@3x.png) center no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+
+    .mytop-content {
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+
+        .msg {
+            width: 80%;
+            margin: 5% auto 0px;
+            display: block;
+            position: relative;
+            display: flex;
+
+            img {
+                width: vw(72);
+                height: vw(72);
+                display: block;
+                border: vw(3) solid rgba(255, 255, 255, 0.5);
+                border-radius: 50%;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+            }
+
+            .username {
+                height: vw(72);
+                width: 100%;
+                padding-left: 80px;
+                box-sizing: border-box;
+                text-align: left;
+                color: #fff;
+                line-height: 24px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+
+                strong {
+                    display: block;
+                    font-size: 16px;
+                    padding-top: 12px;
+                    font-weight: normal;
+                }
+
+                span {
+                    font-size: 12px;
+                }
+            }
+        }
+
+        .DNA {
+            width: 80%;
+            margin: 0px auto 0px;
+            display: block;
+            position: relative;
+            padding-left: vw(80);
+            box-sizing: border-box;
+            text-align: left;
+            font-size: 12px;
+
+            span {
+                height: vw(24);
+                line-height: vw(22);
+                border-radius: 16px;
+                color: #fff;
+                border: vw(1) solid rgba(255, 255, 255, 0.5);
+                background: rgba(255, 255, 255, 0.2);
+                box-sizing: border-box;
+                display: inline-block;
+                vertical-align: top;
+                padding: 0px 12px;
+            }
+        }
+    }
+}
+
+.list {
+    width: vw(375);
+    height: vw(44);
+    margin-bottom: vw(10);
+
+    ul {
+        height: vw(44);
+        width: 100%;
+        background: #fefefe;
+        font-size: 0px;
+        margin-bottom: 10px;
+
+        li {
+            display: inline-block;
+            vertical-align: top;
+            width: 33.333333333%;
+            border-right: vw(1) solid #eee;
+            height: 24px;
+            line-height: 24px;
+            margin: 10px 0px;
+            text-align: center;
+            font-size: 14px;
+            color: #999;
+            box-sizing: border-box;
+
+            span {
+                color: #ff4c35;
+            }
+        }
+    }
+}
+
+.honor {
+    width: vw(375);
+    height: vw(84);
+    background: #fefefe;
+    margin-bottom: vw(10);
+
+    h3 {
+        font-size: 14px;
+        width: vw(375);
+        height: vw(38);
+        font-size: 16px;
+        color: #333;
+        line-height: vw(32);
+        padding-top: vw(6);
+        padding-left: vw(12);
+    }
+
+    ul {
+        width: vw(375);
+        height: vw(46);
+        box-sizing: border-box;
+        overflow-x: auto;
+        padding: 0 vw(12) vw(14);
+
+        li {
+            height: vw(32);
+            width: vw(38);
+            display: inline-block;
+            vertical-align: top;
+            margin-right: vw(12);
+
+            img {
+                display: block;
+                height: vw(32);
+                width: vw(38);
+            }
+        }
+    }
+}
+
+.myItem {
+    .item {
+        width: vw(375);
+        height: vw(45);
+        border-bottom: vw(1) solid #f5f5f5;
+        display: block;
+        line-height: vw(45);
+        font-size: 16px;
+        color: #333;
+        background: #fefefe url(https://s1.c.meishij.net/wap7/images/ms_publis_recipe_r@3x.png) 96% 56% no-repeat;
+        background-size: vw(6) vw(10);
+        position: relative;
+
+        &:first-child::after {
+            content: '免费兑换';
+            margin-left: vw(186);
+            color: #ff4c35;
+            font-size: 12px;
+        }
+
+        &:nth-child(1) {
+            margin-bottom: vw(10);
+        }
+
+        &:nth-child(2) {
+            margin-bottom: vw(10);
+        }
+
+    }
+
+
+
+
+    img {
+        width: vw(27);
+        height: vw(27);
+        margin: vw(8) vw(10);
+        display: block;
+        float: left;
+    }
+}

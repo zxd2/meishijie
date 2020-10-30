@@ -13,7 +13,14 @@ const path = require('path')
 // }
 //react-app-rewired是2.×的版本
 
-const { override, addDecoratorsLegacy, disableEsLint, useBabelRc, fixBabelImports, addWebpackAlias } = require('customize-cra');
+const {
+    override,
+    addDecoratorsLegacy,
+    disableEsLint,
+    useBabelRc,
+    fixBabelImports,
+    addWebpackAlias
+} = require('customize-cra');
 module.exports = override(
     addDecoratorsLegacy(), // S7装饰器支持
     //按需加载antd

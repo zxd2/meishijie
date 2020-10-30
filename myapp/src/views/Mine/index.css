@@ -1,0 +1,7 @@
+.mytop {
+  width: 100%;
+  padding-top: 40%;
+  background: url(../images/home_bgOnline@3x.png) center no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+}
