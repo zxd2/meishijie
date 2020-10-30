@@ -12,6 +12,11 @@ import Reg from '../src/views/Reg'
 import Type from '../src/views/Type'
 import Video from '../src/views/Video'
 import Classify from './views/Classify'
+import Shop from '../src/views/Mine/shop';
+import Msg from '../src/views/Mine/msg';
+import Issue from '../src/views/Mine/issue';
+import Collection from '../src/views/Mine/collection';
+import Our from '../src/views/Mine/our';
 import { Layout, Menu, Row, Col, Button, } from 'antd-mobile';
 
 import 'antd-mobile/dist/antd-mobile.css';
@@ -76,6 +81,7 @@ function App(props) {
   //   history.push(key);
   //   current = key
   // }
+  
   return (
     <div className="App">
       {/* <Menu mode="horizontal" onClick={changeMenu} selectedKeys={[current]}>
@@ -104,6 +110,11 @@ function App(props) {
         <Route path='/reg' component={Reg} />
         <Route path='/login' component={Login} />
         <Route path='/mine' component={Mine} />
+        <Route path='/shop' component={Shop} />
+        <Route path='/msg' component={Msg} />
+        <Route path='/issue' component={Issue} />
+        <Route path='/collection' component={Collection} />
+        <Route path='/our' component={Our} />
         <Route path="/notfound" render={() => <div>404</div>}></Route>
         {/* 重定向 有3个属性from to  exact*/}
         <Redirect from='/' to='/home' exact />
