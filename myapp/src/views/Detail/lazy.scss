@@ -1,0 +1,28 @@
+@import "../../common/sass/vw.scss";
+.am-list-view-scrollview{
+.am-list-header{
+    border-top: 1px solid #ccc;
+    font-weight: 700;
+    line-height: vw(50);
+    padding-bottom: 0!important;
+    text-align: left;
+    span{
+        color: #333;
+        font-size: vw(18);
+    }
+}
+.am-list-body{
+    margin: 0 vw(16);
+    border-radius: vw(16);
+    background: #fff;
+    box-shadow: 0px 0px 32px rgba(0,0,0,0.1);
+    .describes{
+       text-align: left;
+       display: flex;
+       flex-direction: column;
+       .anticon{
+           color:orange
+       }
+    }
+}
+}
