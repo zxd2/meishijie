@@ -11,12 +11,18 @@ import Mine from './views/Mine'
 import Reg from './views/Reg'
 import Type from './views/Type'
 import Video from './views/Video'
+import Detail from './views/Detail'
 import Classify from './views/Classify'
+import Shop from '../src/views/Mine/shop';
 import Msg from '../src/views/Mine/msg';
 import Issue from '../src/views/Mine/issue';
 import Collection from '../src/views/Mine/collection';
 import Our from '../src/views/Mine/our';
+
 import { Layout, Menu, Row, Col, Button, } from 'antd-mobile';
+
+import 'antd-mobile/dist/antd-mobile.css';
+// console.log(logo)
 function App(props) {
   const history = useHistory();
   console.log("history", history)
