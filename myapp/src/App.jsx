@@ -16,6 +16,7 @@ const Msg = lazy(() => import("./views/Mine/msg"));
 const Issue = lazy(() => import("./views/Mine/issue"));
 const Collection = lazy(() => import("./views/Mine/collection"));
 const Our = lazy(() => import("./views/Mine/our"));
+const Shop = lazy(() => import("./views/Mine/shop"));
 
 import { Layout, Menu, Row, Col, Button, } from 'antd-mobile';
 
@@ -118,7 +119,7 @@ function App(props) {
           <Route path='/reg' component={Reg} />
           <Route path='/login' component={Login} />
           <Route path='/mine' component={Mine} />
-          {/* <Route path='/shop' component={Shop} /> */}
+          <Route path='/shop' component={Shop} />
           <Route path='/msg' component={Msg} />
           <Route path='/issue' component={Issue} />
           <Route path='/collection' component={Collection} />
