@@ -1,7 +1,10 @@
 import React from 'react';
 const Login = () => {
     return (
-        <div>登录</div>
+        <div>
+
+
+        </div>
     )
 }
 export default Login
