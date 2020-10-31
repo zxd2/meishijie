@@ -119,7 +119,11 @@ function App(props) {
         <Route path='/login' component={Login} />
         <Route path='/mine' component={Mine} />
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Route path='/shop' component={Shop} />
+=======
+        {/* <Route path='/shop' component={Shop} /> */}
+>>>>>>> 913da28136cb68e72e00849f34b7749b7f06c099
 =======
         {/* <Route path='/shop' component={Shop} /> */}
 >>>>>>> 913da28136cb68e72e00849f34b7749b7f06c099
