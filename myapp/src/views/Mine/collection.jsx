@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState, useLayoutEffect } from 'react';
 import request from '../../utils/request'
 import { NavBar, Icon, Button } from 'antd-mobile';
+import {withUser,withAuth} from '@/utils/hoc';
 
 import './collection.scss'
 
@@ -84,5 +85,5 @@ let Collection = function(props){
 
     )
 }
-
+Collection = withAuth(Collection);
 export default Collection;
