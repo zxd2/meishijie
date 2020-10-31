@@ -1,14 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import userAction from '@/store/actions/user'
 import {withUser,withAuth} from '@/utils/hoc';
-import {Route, Redirect, Switch} from 'react-router-dom';
+import { message } from 'antd';
 
-// import Shop from './shop';
-// import Msg from './msg';
-// import Issue from './issue';
-// import Collection from './collection';
-// import Our from './our';
 
 import './index.scss'
 
@@ -67,39 +60,28 @@ var datalist = [
         path:'/our',
         img:'https://st-cn.meishij.net/p2/20190112/20190112151958_101.png'
     },
-
 ]
-
-// const mapStateToProps = function(state){
-//     console.log('mapStateToProps.state=',state);
-//     return {
-//         isLogin:state.user.isLogin,
-//         currentUser:state.user.currentUser
-//     }
-// }
-
-// const mapDispatchToProps = function(dispatch){
-//     return {
-//         dispatch,
-//         logout(){
-//             // dispatch({type:'logout'})
-//             dispatch(userAction.logout())
-//         }
-//     }
-// } 
-
 
 
 let Mine = (props) => {
-    console.log('Mine.props',props)
-    // const goto = (path) => {
-    //     props.history.push(path);
-    // }
-    // const {path:parentPath, url:parentUrl} = props.match;
+  
+
+    //退出登录
+    const remove  = (currentUser) => {
+        console.log("点击退出")
+        localStorage.removeItem('currentUser');
+        message.success('退出成功')
+        props.history.push('/login');
+    }
+    
+     let {username} = JSON.parse(localStorage.getItem('currentUser'))
+    console.log('usermsg', localStorage.getItem('currentUser'),username);
+
     return (
-        <div>
+        <div className="mine">
             <div className="mytop">
                 <div className="mytop-content">
+                    <div className="remove"><i onClick={remove.bind(this,'currentUser')}>退出</i></div>
                     <div className="msg">
                         <img src="https://s1.c.meishij.net/images/default/tx2_5.png" alt=""/>
                         <div className="username">
@@ -119,30 +101,23 @@ let Mine = (props) => {
                     <li><span>0</span> 菜谱</li>
                 </ul>
             </div>
-      
-        <div className="honor">
-            <h3>荣誉勋章</h3>
-            <ul>
-                {imglist.map(item=><li key={item.id} ><img src={item.img} alt=""/></li>)}
-            </ul>
-        </div>
-        
-        <div className="myItem">
-      {datalist.map(item=><div className="item" key={item.id} onClick={()=>{props.history.push(item.path)}}> <img src={item.img} alt=""/>{item.name}</div>)}
-       </div>
 
-        {/* <Switch>
-            <Route path={parentPath+"/shop"} component={Shop} />
-            <Route path={parentPath+"/msg"} component={Msg} />
-            <Route path={parentPath+"/issue"} component={Issue} />
-            <Route path={parentPath+"/collection"} component={Collection} />
-            <Route path={parentPath+"/our"} component={Our} />
-            <Redirect from={parentPath} to={parentPath+"/collection"}/>
-        </Switch> */}
-
-        </div> 
+            <div className="honor">
+                <h3>荣誉勋章</h3>
+                <ul>
+                    {imglist.map(item=><li key={item.id} ><img src={item.img} alt=""/></li>)}
+                </ul>
+            </div>
+            
+            <div className="myItem">
+                {datalist.map(item=><div className="item" key={item.id} onClick={()=>{props.history.push({
+                    pathname:item.path,
+                    username
+                })}}> <img src={item.img} alt=""/>{item.name}</div>)}
+            </div>
+       </div> 
     )
 }
 Mine = withAuth(Mine);
-// Mine = connect(mapStateToProps,mapDispatchToProps)(Mine)
+
 export default Mine

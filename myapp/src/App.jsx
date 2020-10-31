@@ -19,6 +19,25 @@ const Our = lazy(() => import("./views/Mine/our"));
 
 import { Layout, Menu, Row, Col, Button, } from 'antd-mobile';
 
+import Home from './views/Home'
+import Login from './views/Login'
+import Menua from './views/Menua'
+import Mine from './views/Mine'
+import Reg from './views/Reg'
+import Type from './views/Type'
+import Video from './views/Video'
+import Detail from './views/Detail'
+import Classify from './views/Classify'
+import Shop from '../src/views/Mine/shop';
+import Msg from '../src/views/Mine/msg';
+import Issue from '../src/views/Mine/issue';
+import Collection from '../src/views/Mine/collection';
+import Our from '../src/views/Mine/our';
+
+import { Layout, Menu, Row, Col, Button, } from 'antd-mobile';
+
+import 'antd-mobile/dist/antd-mobile.css';
+// console.log(logo)
 function App(props) {
   const history = useHistory();
   console.log("history", history)
@@ -108,28 +127,60 @@ function App(props) {
           {/* {
           menu.map(item => <Route key={item.name} path={item.path} component={item.component} />)
         } */}
-          <Route path='/home' component={Home} />
-          <Route path='/menu' component={Menu} />
-          <Route path='/type' component={Type} />
-          <Route path='/video' component={Video} />
-          <Route path='/reg' component={Reg} />
-          <Route path='/login' component={Login} />
-          <Route path='/mine' component={Mine} />
-          {/* <Route path='/shop' component={Shop} /> */}
-          <Route path='/msg' component={Msg} />
-          <Route path='/issue' component={Issue} />
-          <Route path='/collection' component={Collection} />
-          <Route path='/our' component={Our} />
-          <Route path='/classify' component={Classify} />
-          <Route path='/detail' component={Detail} />
-          <Route path="/notfound" render={() => <div>404</div>}></Route>
-          {/* 重定向 有3个属性from to  exact*/}
-          <Redirect from='/' to='/home' exact />
-          {/* 如果匹配不成功就跳到这里 */}
-          <Redirect to="/notfound" />
+<<<<<<< HEAD
+        <Route path='/home' component={Home} />
+        <Route path='/menu' component={Menu} />
+        <Route path='/type' component={Type} />
+        <Route path='/video' component={Video} />
+        <Route path='/reg' component={Reg} />
+        <Route path='/login' component={Login} />
+        <Route path='/mine' component={Mine} />
+        {/* <Route path='/shop' component={Shop} /> */}
+        <Route path='/msg' component={Msg} />
+        <Route path='/issue' component={Issue} />
+        <Route path='/collection' component={Collection} />
+        <Route path='/our' component={Our} />
+        <Route path='/classify' component={Classify} />
+        <Route path='/detail' component={Detail} />
+        <Route path="/notfound" render={() => <div>404</div>}></Route>
+        {/* 重定向 有3个属性from to  exact*/}
+        <Redirect from='/' to='/home' exact />
+        {/* 如果匹配不成功就跳到这里 */}
+        <Redirect to="/notfound" />
         </Switch>
       </Suspense>
     </div >
+=======
+        <Route path='/home' component={Home} />
+        <Route path='/menu' component={Menu} />
+        <Route path='/type' component={Type} />
+        <Route path='/video' component={Video} />
+        <Route path='/reg' component={Reg} />
+        <Route path='/login' component={Login} />
+        <Route path='/mine' component={Mine} />
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <Route path='/shop' component={Shop} />
+=======
+        {/* <Route path='/shop' component={Shop} /> */}
+>>>>>>> 913da28136cb68e72e00849f34b7749b7f06c099
+=======
+        {/* <Route path='/shop' component={Shop} /> */}
+>>>>>>> 913da28136cb68e72e00849f34b7749b7f06c099
+        <Route path='/msg' component={Msg} />
+        <Route path='/issue' component={Issue} />
+        <Route path='/collection' component={Collection} />
+        <Route path='/our' component={Our} />
+        <Route path='/classify' component={Classify} />
+        <Route path='/detail' component={Detail} />
+        <Route path="/notfound" render={() => <div>404</div>}></Route>
+  {/* 重定向 有3个属性from to  exact*/ }
+  <Redirect from='/' to='/home' exact />
+  {/* 如果匹配不成功就跳到这里 */ }
+  <Redirect to="/notfound" />
+      </Switch >
+    </div >
+>>>>>>> 0983585bda286aa2ce9f57eed3b14cf320a62581
   );
 }
 

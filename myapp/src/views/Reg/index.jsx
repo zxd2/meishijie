@@ -74,7 +74,7 @@ const Reg = (props) => {
         <div>
               <div className="navBar">
             <ul>
-                <li><Icon type="left"size={'lg'} onClick={()=>{props.history.goBack()}}/>返回</li>
+                <li onClick={()=>{props.history.goBack()}} ><Icon type="left"size={'lg'}/>返回</li>
                 <li>注册美食杰</li>
                 <li onClick={()=>{props.history.push('/login')}}>登录</li>
             </ul>
