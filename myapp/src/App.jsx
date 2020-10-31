@@ -1,25 +1,24 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { withRouter, useHistory, useLocation, useRouteMatch, useParams, Route, Switch, Redirect } from 'react-router-dom';
 import logo from '@/logo.svg';
 import './App.scss';
 import "./common/reset.css"
-
-import Home from './views/Home'
-import Login from './views/Login'
-import Menua from './views/Menua'
-import Mine from './views/Mine'
-import Reg from './views/Reg'
-import Type from './views/Type'
-import Video from './views/Video'
-import Detail from './views/Detail'
-import Classify from './views/Classify'
-import Shop from '../src/views/Mine/shop';
-import Msg from '../src/views/Mine/msg';
-import Issue from '../src/views/Mine/issue';
-import Collection from '../src/views/Mine/collection';
-import Our from '../src/views/Mine/our';
+const Home = lazy(() => import("./views/Home"));
+const Mine = lazy(() => import("./views/Mine"));
+const Login = lazy(() => import("./views/Login"));
+const Menua = lazy(() => import("./views/Menua"));
+const Reg = lazy(() => import("./views/Reg"));
+const Type = lazy(() => import("./views/Type"));
+const Video = lazy(() => import("./views/Video"));
+const Classify = lazy(() => import("./views/Classify"));
+const Detail = lazy(() => import("./views/Detail"));
+const Msg = lazy(() => import("./views/Mine/msg"));
+const Issue = lazy(() => import("./views/Mine/issue"));
+const Collection = lazy(() => import("./views/Mine/collection"));
+const Our = lazy(() => import("./views/Mine/our"));
 
 import { Layout, Menu, Row, Col, Button, } from 'antd-mobile';
+
 
 import 'antd-mobile/dist/antd-mobile.css';
 // console.log(logo)
@@ -107,8 +106,9 @@ function App(props) {
         onChange={this.onChange}
         height={document.documentElement.clientHeight * 0.6}
       /> */}
-      <Switch>
-        {/* {
+      <Suspense fallback={<div>loading...</div>}>
+        <Switch>
+          {/* {
           menu.map(item => <Route key={item.name} path={item.path} component={item.component} />)
         } */}
         <Route path='/home' component={Home} />
