@@ -26,7 +26,7 @@ const Headers = lazy(() => import("@/component/headers"));
 
 const { Header, Footer, Sider, Content } = Layout;
 
-const Home = (props) => {
+let Home = (props) => {
     //  console.log('useHistory()',useHistory())
     const { push, location } = useHistory();
 
