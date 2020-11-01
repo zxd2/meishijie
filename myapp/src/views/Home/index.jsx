@@ -1,12 +1,14 @@
 import React from 'react';
 import { SearchBar, Button, WhiteSpace, Carousel, WingBlank, Icon, View, Tabs } from 'antd-mobile';
-import SwiperCore, { Virtual } from 'swiper';
+import SwiperCore, { Virtual,Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import './index.scss';
 import 'swiper/swiper.scss';
+import 'swiper/components/pagination/pagination.scss';
 import ContentNav from './ContentNav';
 
-SwiperCore.use([Virtual]);
+
+SwiperCore.use([Virtual, Pagination,Swiper]);
 class Home extends React.Component{
     state={
         imgHeight: document.body.scrollWidth*0.85,
@@ -73,16 +75,32 @@ class Home extends React.Component{
             img:"https://st-cn.meishij.net/r/246/137/1534496/s1534496_65833.jpg",
             dec:"简单快手，分分钟搞定"}] },
         ],
-        currentIndex:1
+        fenlei:[
+            { title: '推荐', key: 't1'},
+            { title: '时令', key:'t2'},
+            { title: '食肉', key:'t3'},
+            { title: '素食', key:'t4'},
+            { title: '烘焙', key:'t5'},
+
+        ],
+        currentIndex:1,
+        newCurrent:0,
+        tuijian:[]
     }
     hangeindex=(index)=>{
         this.setState({
             currentIndex:index
         })
     }
+    changeindex=(index)=>{
+        this.setState({
+            newCurrent:index
+        })
+    }
+   
     render(){ console.log("data",this.state.data)
-    const {tabs,imgHeight,data } = this.state;
-    let {currentIndex} = this.state;
+    const {tabs,imgHeight,data,fenlei } = this.state;
+    let {currentIndex,newCurrent} = this.state;
         return (
            
             <div className='home'>
@@ -100,8 +118,8 @@ class Home extends React.Component{
                       virtual
                     //   pagination={{ clickable: true }}
                     //   scrollbar={{ draggable: true }}
-                      onSlideChange={() => console.log('slide change')}
-                      onSwiper={(swiper) => console.log(swiper)}
+                    //   onSlideChange={() => console.log('slide change')}
+                    //   onSwiper={(swiper) => console.log(swiper)}
                     >
                         
                     {data.map((item,index)=>{
@@ -177,6 +195,9 @@ class Home extends React.Component{
                               slidesPerView={1}
                               slidesOffsetBefore={12}
                               slidesOffsetAfter={12}
+                              pagination={{el:'.sc_titlew_scroller',loop:true,type:"custom",clickable: true,renderCustom:function(swiper,current,total){
+
+                              }}}
                               virtual
                               onSlideChange={() => console.log('slide change')}
                               onSwiper={(swiper) => console.log(swiper)}
@@ -187,7 +208,7 @@ class Home extends React.Component{
                                     return(
                                         <SwiperSlide>
                                             <ContentNav key={index} con={item.content} />
-                                            </SwiperSlide>
+                                        </SwiperSlide>
                                     )
                                 })
                             }
@@ -196,8 +217,31 @@ class Home extends React.Component{
                         </div>
                     </div>
                 </div>
-                
-            </div>
+                <Swiper
+                    pagination={{ clickable: true }}
+                    loop={true}
+                >
+                  <SwiperSlide><div className="imgbanner"><img src="https://st-cn.meishij.net/p2/20201030/20201030180302_679.jpg" style={{ display:"block",width:"100%" }}/></div></SwiperSlide>
+                  <SwiperSlide><div className="imgbanner"><img src="https://st-cn.meishij.net/p2/20201029/20201029205121_632.jpg" style={{ display:"block",width:"100%" }}/></div></SwiperSlide>
+                  <SwiperSlide><div className="imgbanner"><img src="https://st-cn.meishij.net/p2/20201029/20201029165331_632.jpg" style={{ display:"block",width:"100%" }}/></div></SwiperSlide>
+                </Swiper>
+                <div className="titlesw">
+                    <h4 className="title_s1">大家都在做</h4>               
+                    <div className="sc_titlew">
+                        <div className="sc_titlew_scroller" id="sancan_nt">
+                            {
+                               fenlei.map((item,index)=>{
+                                    return(
+                                        <span data-tab="0" onClick={()=>{this.changeindex(index)}} key={item.key} className={`t ${item.key} ${index===newCurrent?"current":" "}`}>
+                                            <em>{item.title}</em>
+                                        </span>
+                                    )
+                               })
+                            }
+                            </div>
+                        </div>
+                    </div>
+                </div>
         )
     }
 }

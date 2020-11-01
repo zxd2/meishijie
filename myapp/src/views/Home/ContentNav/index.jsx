@@ -7,7 +7,7 @@ class ContentNav extends React.Component{
         const con = this.props.con
         console.log(con)
         return(
-            <div>
+            <div className="flex">
                     {
                         con.map((item,index)=>{
                             return(

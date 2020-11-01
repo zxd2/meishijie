@@ -1,11 +1,15 @@
 @import "../../../common/sass/vw.scss";
 
+.flex{
+    display: flex;
+}
 .sancan_swiper_item {
     box-sizing: border-box;
     padding: 0 1.6vw;
     width: 50%;
     display: inline-block;
     vertical-align: top;
+    flex: 1;
     .sancan_item{
         display: inline-block;
         vertical-align: top;
