@@ -37,7 +37,8 @@ let userReducer = function (state = initState, action) {
             //在这个位置做数据持久化：就是把数据存入webStorage
 
             console.log("action.data", action.data)
-            localStorage.setItem("currentUser", JSON.stringify(action.data))
+
+            // localStorage.setItem("currentUser", JSON.stringify(action.data))
 
             return {
                 isLogin: true,
@@ -70,17 +71,17 @@ let userReducer = function (state = initState, action) {
 
 }
 // 封装一个组件：Provider
-// export const MyContext = React.createContext(null)
+export const MyContext = React.createContext(null)
 
-// export const Providers = (props) => {
-//     const [state, dispatchs] = useReducer(userReducer, initState);
-//     // console.log("states", state)
-//     // console.log("dispatch", dispatchs)
-//     return (
-//         <MyContext.Provider value={{ state, dispatchs }}>
-//             {props.children}
-//         </MyContext.Provider>
-//     )
-// }
+export const Provider = (props) => {
+    const [state, dispatch] = useReducer(userReducer, initState);
+    // console.log("states", state)
+    // console.log("dispatch", dispatchs)
+    return (
+        <MyContext.Provider value={{ state, dispatch }}>
+            {props.children}
+        </MyContext.Provider>
+    )
+}
 
 export default userReducer
