@@ -12,6 +12,7 @@
     "antd": "^4.7.3",
     "antd-mobile": "^2.3.4",
     "axios": "^0.21.0",
+    "babel-loader": "^8.1.0",
     "crypto-js": "^4.0.0",
     "node-sass": "^4.14.1",
     "rc-form": "^2.4.11",
@@ -20,6 +21,7 @@
     "react-redux": "^7.2.2",
     "react-scripts": "3.4.4",
     "redux": "^4.0.5",
+    "swiper": "^6.3.4",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -51,5 +53,7 @@
     "customize-cra": "^1.0.0",
     "react-app-rewired": "^2.1.6",
     "react-router-dom": "^5.2.0"
-  }
+  },
+  "main": "index.js",
+  "license": "MIT"
 }
