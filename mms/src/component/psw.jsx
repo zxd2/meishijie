@@ -1,10 +1,9 @@
 import React, { useState }  from 'react';
-import { Modal, Button, } from 'antd';
-import  Changepsw from '../changepsw';
-
 // import './index.scss'
+import { Modal, Button, } from 'antd';
+import  Order from '../Order';
  
-class Psw extends React.Component {
+class psw extends React.Component {
 
   state = { visible: false };
 
@@ -40,7 +39,7 @@ class Psw extends React.Component {
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
-          <Changepsw/>
+          <Order/>
         
         </Modal>
       </>
@@ -48,4 +47,4 @@ class Psw extends React.Component {
   }
 }
 
-export default Psw
+export default psw
