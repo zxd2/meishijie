@@ -1,19 +1,108 @@
 @import '../../common/sass/vw.scss';
 
-.am-navbar {
-    .am-navbar-right {
-        color: #ff5151;
+.collection {
+    width: vw(375);
+    position: relative;
+
+    .am-navbar.am-navbar-light {
+        width: vw(375);
+        height: vw(45) !important;
     }
 
-    .am-navbar-left {
-        color: #ff5151;
-        font-size: 15px;
-        padding: 0;
-        line-height: vw(45);
+    .am-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        .am-navbar-right {
+            color: #ff5151;
+        }
+
+        .am-navbar-left {
+            color: #ff5151;
+            font-size: 15px;
+            padding: 0;
+            line-height: vw(45);
+        }
+
+        .am-navbar-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
     }
 
-    .am-navbar-title {
-        font-size: 16px;
-        font-weight: bold;
+    .goods {
+        padding-top: vw(45);
+
+        .foodItem {
+            width: vw(375);
+            height: vw(140);
+            box-sizing: border-box;
+            padding: vw(12) vw(16);
+            display: flex;
+
+            img {
+                width: vw(116);
+                height: vw(116);
+                border-radius: vw(10);
+            }
+
+            .content {
+                width: vw(210);
+                height: vw(116);
+                margin-left: vw(17);
+
+                h2 {
+                    color: #2e2e2e;
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+
+                .dec {
+                    width: vw(204);
+                    height: vw(38);
+                    border-radius: vw(2);
+                    background: #fcf2f2;
+                    color: #f09c9a;
+                    font-size: 12px;
+                    box-sizing: border-box;
+                    padding: 0 vw(6);
+                    margin-bottom: vw(12);
+                }
+
+                .umsg {
+                    display: flex;
+                    position: relative;
+                    z-index: -5;
+
+                    img {
+                        width: vw(20);
+                        height: vw(20);
+                        border-radius: 50%;
+                        margin-right: vw(8);
+                    }
+
+                    p {
+                        font-size: 12px;
+                    }
+
+                    i {
+                        background: url(https://s1.st.meishij.net/p2/20181206/20181206143142_460.png) vw(-4) vw(-20) no-repeat;
+                        background-size: vw(20) vw(40);
+                        height: vw(10);
+                        width: vw(13);
+                        position: absolute;
+                        top: 16%;
+                        right: 22%;
+                    }
+
+                    strong {
+                        margin-left: vw(82);
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
     }
 }

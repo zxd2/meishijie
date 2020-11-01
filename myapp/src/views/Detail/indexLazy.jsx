@@ -164,7 +164,7 @@ class detailist extends React.Component {
                     <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0' }}>
                         <img style={{ weight: '112px', height: '112px', marginRight: '15px', borderRadius: "15px" }} src={rowData.缩略图 || rowData.image} alt="" />
                         <div className="describes" style={{ lineHeight: 1, flex: 1 }}>
-                            <div style={{ marginBottom: '8px', fontWeight: 'bold', fontSize: "17px", flex: 1 }}>{rowData.name}</div>
+                            <div style={{ marginBottom: '8px', fontWeight: 'bold', fontSize: "17px", flex: 1 }}>{rowData.name || rowData.name1}</div>
                             <div style={{ flex: 1 }}><StarFilled /><StarFilled /><StarFilled /><StarFilled /><StarFilled /></div>
                             <div style={{ flex: 1 }} className="amount">
                                 <span style={{ fontSize: '14px', color: '#949494', lineHeight: "14px" }}>

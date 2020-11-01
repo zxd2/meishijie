@@ -3,10 +3,6 @@ import { Form, Input, Button, Checkbox, message} from 'antd';
 import { NavBar, Icon} from 'antd-mobile';
 import request from '@/utils/request';
 import SHA256 from 'crypto-js/sha256';
-import userAction from '../../store/actions/user';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {useHistory} from 'react-dom'
 
 import 'antd/dist/antd.css';
 import './index.scss'
@@ -44,9 +40,6 @@ let Login = (props) => {
         password = SHA256(password).toString();
         console.log('加密后=',password)
 
-        //调用dispatch,saga文件那边会监听到，就会自动执行login
-        // props.dispatch({type:'login_async',data:{username,password,remember}});
-        // return;
         const {data} = await request.get('/user/login',{ 
             params:{
                 username,
@@ -64,16 +57,6 @@ let Login = (props) => {
             }else{
                 sessionStorage.setItem('currentUser',JSON.stringify(username))
             }
-            // props.history.push('/mine')
-            //  //3.把用户信息存入redux
-            //  const action = {type:'login',user:data.data};
-            //  store.dispatch(action)
-            //  console.log('newStore=',store.getState())
-
-            // 使用react-redux可以直接通过 props.dispatch 使用dispatch方法
-            // props.dispatch({type:'login',user:data.data})
-
-            // props.login(data.data);
 
             //提取目标地址
             const {search} = props.location;
@@ -93,12 +76,11 @@ let Login = (props) => {
         }  
     }
 
-   
     return (
         <div>
               <div className="navBar">
             <ul>
-                <li><Icon type="left"size={'lg'} onClick={()=>{props.history.goBack()}}/>返回</li>
+                <li onClick={()=>{props.history.goBack()}} ><Icon type="left"size={'lg'}/>返回</li>
                 <li>登录美食杰</li>
                 <li onClick={()=>{props.history.push('/reg')}}>注册</li>
             </ul>
@@ -106,7 +88,7 @@ let Login = (props) => {
         <Form
                 // {...layout}
                 name="basic"
-                initialValues={{ remember: true }}
+                initialValues={{ remember: true }}//设置初始值
                 onFinish={onFinish}
                 // onFinishFailed={onFinishFailed}
                 >
@@ -147,30 +129,5 @@ let Login = (props) => {
         </div>
     )
 }
-
-
-// const mapStateToProps = state =>{
-//     console.log('mapStateToProps.state=',state);
-//     return {
-        
-//     }
-// }
- 
-// const mapDispatchToProps = dispatch =>{
-//     return {
-//         dispatch,
-//         login(user){
-//             // dispatch({type:'login',user })
-//             dispatch(userAction.login(user))
-//         },
-//         logout(){
-//             dispatch(userAction.logout())
-//         }
-//     }
-//     // return bindActionCreators(userAction,dispatch)//默认导出userAction中export default的所有方法，绑定到组件props并自动隐式调用dispatch(action)
-//     //生成跟上面的是一样的
-// }
-
-// Login = connect(mapStateToProps,mapDispatchToProps)(Login)//connect的返回值是高阶组件
 
 export default Login
