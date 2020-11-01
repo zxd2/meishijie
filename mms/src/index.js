@@ -4,7 +4,7 @@ import { HashRouter, BrowserRouter } from 'react-router-dom'
 import './index.css';
 import App from './App.jsx';
 import store from '@/store';
-// import { Providers } from './store/reducers/user'
+// import { Provider } from './store/reducers/user'
 import { Provider } from 'react-redux';
 // import reportWebVitals from './reportWebVitals';
 
@@ -13,8 +13,8 @@ const Router = process.env.NODE_ENV === 'development' ? HashRouter : BrowserRout
 
 ReactDOM.render(
   // <React.StrictMode>
-  // <Providers >
-  <Provider store={store}>
+  // <Providers >store={store}
+  <Provider store={store} >
     <Router>
       <App />
     </Router>

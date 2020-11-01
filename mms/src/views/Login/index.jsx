@@ -3,12 +3,11 @@ import './index.scss'
 import SHA256 from 'crypto-js/sha256';
 import { Form, Input, Button, Checkbox, message } from 'antd';
 import request from '@/utils/request';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import userAction from '../../store/actions/user'
 import { useHistory, useLocation } from 'react-router-dom'
-// import { MyContext } from '../../store/reducers/user'
-// import userReducer from '../../store/reducers/user';
+import { MyContext } from '../../store/reducers/user'
+import userReducer from '../../store/reducers/user';
 
 // console.log("MyContext", MyContext)
 const layout = {
@@ -29,20 +28,21 @@ const rules = {
 }
 
 let Login = (props) => {
-    // let [isok, changeisok] = useState(false)
-    // let { state, dispatchs } = useContext(MyContext)
-    // console.log(state, dispatchs, "dispatch")
+    // let { state, dispatch } = useContext(MyContext)
+    // console.log(dispatch, "login.dispatch")
+    // console.log(state, "login.state")
 
     console.log("login.props", props)
     const onFinish = async values => {
-        // console.log('加密前=', values)
+        console.log('加密前=', values)
 
         // 把密码通过Crypto进行加密（加密算法：sha256）
         let { username, password, remember } = values;
         password = SHA256(values.password).toString()
-        // console.log('加密后=', password)
+
         //触发第一个action进入中间件，并把用户名和密码传进去
-        // console.log(456789)
+        // return dispatch({ type: 'login_async', data: { username, password } })
+        // return 
         const { data } = await request.get('/user/login', {
             params: {
                 // 现在发送的才是加密后的密码给后端！！
@@ -51,21 +51,28 @@ let Login = (props) => {
             }
         })
         console.log(data, "data")
+
         // const value = useContext(MyContext);
         // console.log(value, "value")
         // setTimeout(() => {
         //     console.log(props.state, "改变")
         // }, 1000)
         // console.log("login.props", props)
-
-        // // console.log(succeed, "succeed")
-        // const { search } = useLocation();
+        let { token } = data
         if (data.flag) {
+            props.dispatch({ type: 'login', data: { username, password } })
+            if (remember) {
+                console.log(123)
+                localStorage.setItem('currentUser', JSON.stringify({ username, token }))
+            } else {
+                console.log(456)
+                sessionStorage.setItem('currentUser', JSON.stringify({ username, token }))
+            }
             // console.log(succeed, "succeed")
             message.success('登录成功')
 
             // 提取目标地址 
-            const pathname = props.location.search.match(/url\=([\/\w\-]+)/);
+            const pathname = props.location.search.match(/targetUrl\=([\/\w\-]+)/);
             let targetUrl;
             if (pathname) {
                 targetUrl = pathname[1];
@@ -74,9 +81,6 @@ let Login = (props) => {
             props.history.push({
                 pathname: targetUrl || '/home'
             })
-            props.dispatch({ type: 'login', data: { username, password } })
-
-            console.log(props.state)
         } else {
             message.error('用户名或密码错误')
         }
@@ -138,24 +142,24 @@ const mapStateToProps = state => {
     }
 }
 
-//主要是可以把redux的代码集中的放在一起,mapDispatchToProps里面有props
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         dispatch,//记得要把dispatch加回去，不然就会被覆盖
-//         //封装登录的方法，并传user参数进去
-//         login(user) {
-//             console.log(user, "user")
-//             //dispatch({ type: 'login', user })
-//             //又去封装了生成登录action的函数了
-//             dispatch(userAction.login(user))
-//             // dispatch({ type: 'login_async' })
-//         },
-//         logout() {
-//             dispatch(userAction.logout())
-//         }
-//     }
-//     // 如果同时要用到几个action的话、可以借助一个方法,能用到userAction里面的所有方法
-//     // return bindActionCreators(userAction, dispatch)
-// }
-Login = connect(mapStateToProps)(Login)  //还会自动把dispatch传进props里面去
+// 主要是可以把redux的代码集中的放在一起, mapDispatchToProps里面有props
+const mapDispatchToProps = dispatch => {
+    return {
+        dispatch,//记得要把dispatch加回去，不然就会被覆盖
+        //封装登录的方法，并传user参数进去
+        login(user) {
+            console.log(user, "user")
+            //dispatch({ type: 'login', user })
+            //又去封装了生成登录action的函数了
+            // dispatch(userAction.login(user))
+            dispatch({ type: 'login', data: { username, password } })
+        },
+        logout() {
+            dispatch(userAction.logout())
+        }
+    }
+    // 如果同时要用到几个action的话、可以借助一个方法,能用到userAction里面的所有方法
+    // return bindActionCreators(userAction, dispatch)
+}
+Login = connect(mapStateToProps, mapDispatchToProps)(Login)  //还会自动把dispatch传进props里面去
 export default Login
