@@ -14,6 +14,7 @@ const Home = lazy(() => import("./views/Home"));
 const Reg = lazy(() => import("./views/Reg"));
 const Login = lazy(() => import("./views/Login"));
 
+
 function App(props) {
 
   const menu = [
