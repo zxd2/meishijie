@@ -10,7 +10,7 @@ import {
     LinkOutlined,
     HomeOutlined,
 } from '@ant-design/icons';
-
+import request from '@/utils/request';
 import './index.scss'
 // import { MyContext } from '../../store/reducers/user'
 import { connect } from 'react-redux';
@@ -27,18 +27,22 @@ const Headers = lazy(() => import("@/component/headers"));
 const { Header, Footer, Sider, Content } = Layout;
 
 let Home = (props) => {
-    //  console.log('useHistory()',useHistory())
     const { push, location } = useHistory();
-
     //设置初始值，每次刷新页面获取pathname作为初始值
     let [current, changeCurrent] = useState(location.pathname)
-
     //点击跳转到相应页面
     //key={item.path},这边的key为path
-    const changeMenu = ({ key }) => {
+    let data
+    const changeMenu = async ({ key }) => {
         push(key);
         current = key;
         changeCurrent(current)//改变高亮值
+        data = await request.get('/user/list', {
+            params: {
+                page: 1,
+                pagesize: 10
+            }
+        })
     }
     console.log('current', current)
 
@@ -127,7 +131,7 @@ let Home = (props) => {
                     <Content >
                         <Suspense fallback={<div>loading...</div>}>
                             <Switch>
-                                <Route path='/home/user' component={User} />
+                                <Route path='/home/user' component={User} userdata={data} />
                                 <Route path='/home/goods' component={Goods} />
                                 <Route path='/home/order' component={Order} />
                                 <Route path='/home/collect' component={Collect} />

@@ -1,77 +1,119 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState, useLayoutEffect } from 'react';
 import './index.scss'
-import { Breadcrumb, Table, Tag, Space, Button} from 'antd';
+import request from '@/utils/request';
+import { Breadcrumb, Table, Tag, Space, Button, Input } from 'antd';
 
-import { UserOutlined,HomeOutlined } from '@ant-design/icons';
+import { UserOutlined, HomeOutlined } from '@ant-design/icons';
 
 
-const { Column, ColumnGroup } = Table;
 
-const data = [
-    {
-        _id: "5f1dcb1f3f1eb819289bb8c7",
-        username: "Rodriguez",
-        name: "姜军",
-        birthday: "1985-02-10",
-        sex: "女",
-        phone: "18683965065",
-        address: "新疆维吾尔自治区 克拉玛依市 白碱滩区",
-        pic: "http://dummyimage.com/50x50"
-      },
-      {
-        _id: "5f1dcb1f3f1eb819289bb8c7",
-        username: "Rodriguez",
-        name: "姜军",
-        birthday: "1985-02-10",
-        sex: "女",
-        phone: "18683965065",
-        address: "新疆维吾尔自治区 克拉玛依市 白碱滩区",
-        pic: "http://dummyimage.com/50x50"
-      },
-      {
-        _id: "5f1dcb1f3f1eb819289bb8c7",
-        username: "Rodriguez",
-        name: "姜军",
-        birthday: "1985-02-10",
-        sex: "女",
-        phone: "18683965065",
-        address: "新疆维吾尔自治区 克拉玛依市 白碱滩区",
-        pic: "http://dummyimage.com/50x50"
-      },
+const User = (props) => {
+  let [data, changeData] = useState("")
+  //渲染数据
+  useEffect(async () => {
+    try {
+      const data2 = await request.get('/user/list', {
+        params: {
+          page: 1,
+          pagesize: 20
+        }
+      })
+      if (data2.data.flag) {
+        changeData(data2.data.data)
+      }
+    } catch (err) {
+      console.log("err", err)
+    }
+  }, [])
+  console.log("data", data)
+  //删除功能
+  const delUser = async (id) => {
+    try {
+      const deldata = await request.delete('/user/del/' + id)
+      console.log(deldata, "deldata")
+      if (deldata.data.flag) {
+        let newData = data.filter(item => {
+          item._id !== id
+        })
+        changeData(newData)
+        // data = newData
+      }
+    } catch (err) {
+      console.log("err", err)
+    }
+  }
+  //查询功能
+  const fetchall = async (value) => {
+    try {
+      let p = await request.get('/user/list', {
+        params: {
+          page: 1,
+          pagesize: 20,
+          search: { "": value }
+        }
+      })
+      if (p.data.flag) {
+        changeData(p.data.data)
+        // data = p.data.data
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
-];
-const User = () => {
-    return (
-        <div>
-             <Breadcrumb>
-                  <Breadcrumb.Item >
-                    <HomeOutlined />
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item >
-                    <UserOutlined />
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item>用户管理</Breadcrumb.Item>
-            </Breadcrumb>
+  const { Search } = Input;
+  const { Column, ColumnGroup } = Table;
+  // const onSearch = value => {
+  //   console.log(value)
+  //   fetchall(value)
+  // };
+  return (
+    <div>
+      <Search
+        style={{}}
+        placeholder="请输入关键字"
+        allowClear
+        enterButton="查询"
+        size="large"
+        // onChange
+        onSearch={(value) => { fetchall(value) }}
+      />
+      <Button type="primary" className="btn1">
+        重置
+        </Button>
+      <Button type="primary" className="btn2">
+        新增
+        </Button>
+      <Breadcrumb>
+        <Breadcrumb.Item >
+          <HomeOutlined />
+        </Breadcrumb.Item>
+        <Breadcrumb.Item >
+          <UserOutlined />
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>用户管理</Breadcrumb.Item>
+      </Breadcrumb>
 
-    <Table dataSource={data}>   
-    <Column title="name" dataIndex="name" key="name" />
-    <Column title="sex" dataIndex="sex" key="sex" />
-    <Column title="birthday" dataIndex="birthday" key="birthday" />
-    <Column title="phone" dataIndex="phone" key="phone" />
-    <Column title="address" dataIndex="address" key="address" />
+      <Table dataSource={data}>
+        <Column title="姓名" dataIndex="name" key="name" />
+        <Column title="性别" dataIndex="sex" key="sex" />
+        <Column title="生日" dataIndex="birthday" key="birthday" />
+        <Column title="手机号码" dataIndex="phone" key="phone" />
+        <Column title="地址" dataIndex="address" key="address" />
 
-    <Column
-      title="Action"
-      key="action"
-      render={(text, record) => (
-        <Space size="middle">
-          <Button>编辑</Button>
-          <Button danger>删除</Button>
-        </Space>
-      )}
-    />
-  </Table>
-        </div>
-    )
+        <Column
+          title="操作"
+          key="action"
+          render={(text, record) => (
+            < Space size="middle">
+              <Button>编辑</Button>
+              <Button danger onClick={() => { delUser(text._id) }} >删除</Button>
+            </Space >
+
+          )}
+        />
+      </Table>
+    </div>
+  )
 }
 export default User
