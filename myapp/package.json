@@ -21,12 +21,8 @@
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
     "react-scripts": "3.4.4",
-<<<<<<< HEAD
-    "start": "^5.1.0",
-=======
     "redux": "^4.0.5",
     "swiper": "^6.3.4",
->>>>>>> dev
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -60,13 +56,6 @@
     "react-app-rewired": "^2.1.6",
     "react-router-dom": "^5.2.0"
   },
-<<<<<<< HEAD
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "config-overrides.js",
-  "author": "",
-  "license": "ISC"
-=======
   "main": "index.js",
   "license": "MIT"
->>>>>>> 200739d18e0c41f266130819c4c39c96805892ad
 }
