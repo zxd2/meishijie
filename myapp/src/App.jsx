@@ -70,45 +70,6 @@ function App(props) {
       component: Mine,
 
 
-<<<<<<< HEAD
-render(){console.log('App.props',this.props);
-    const {menu,current} = this.state;
-    
-    return (
-        
-       <div style={{position:'flex' ,top:"0",width:'100%'}}>
-        
-                   {
-                       menu.map(item => <NavLink style={{display:'inline-block'
-                       ,width:'72px',fontSize:'18px',
-                       textAlign:'center',height:'30px',lineHeight:'30px',background:'white',color:'black'}}
-                           key={item.path}
-                           icon={item.icon}
-                           title={item.text}
-                           to={item.path} onClick={()=>{
-                               this.props.history.push(item.path)
-                           }}
-                       >{item.text}</NavLink>)
-                   }
-         
-         <Switch>
-                {
-                    menu.map(item => <Route key={item.name} path={item.path} component={item.component} />)
-                }
-               <Route path='home' component={Home} />
-               <Route path='menu' component={menU} />
-               <Route path='type' component={Type} />
-               <Route path='video' component={Video} />
-               
-               <Route path='mine' component={Mine} />
-                <Route path='classify' component={ Classify} />
-                </Switch>
-            
-          
-          </div>
-      )
-  }
-=======
   return (
     <div className="App">
       {/* <Menu mode="horizontal" onClick={changeMenu} selectedKeys={[current]}>
@@ -154,7 +115,6 @@ render(){console.log('App.props',this.props);
       </Suspense>
     </div >
   );
->>>>>>> 200739d18e0c41f266130819c4c39c96805892ad
 }
 // App=withRouter(App)
 export default App
