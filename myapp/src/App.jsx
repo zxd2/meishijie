@@ -93,8 +93,8 @@ function App(props) {
           {/* {
           menu.map(item => <Route key={item.name} path={item.path} component={item.component} />)
         } */}
-          <Route path='/home' component={Home} />
-          <Route path='/menu' component={Menu} />
+          <Route path='/home' component={Home}a />
+          <Route path='/menua' component={Menua} />
           <Route path='/type' component={Type} />
           <Route path='/video' component={Video} />
           <Route path='/reg' component={Reg} />
