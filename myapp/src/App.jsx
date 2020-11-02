@@ -22,17 +22,6 @@ const Collection = lazy(() => import("./views/Mine/collection"));
 const Our = lazy(() => import("./views/Mine/our"));
 const Shop = lazy(() => import("./views/Mine/shop"));
 
-<<<<<<< HEAD
-import Home from '../src/views/Home'
-import Login from '../src/views/Login'
-import Menua from '../src/views/Menua/index'
-import Mine from '../src/views/Mine'
-import Reg from '../src/views/Reg'
-import Type from '../src/views/Type'
-import Video from '../src/views/Video'
-import Classify from '../src/views/classify/classify'
-=======
->>>>>>> dev
 import { Layout, Menu, Row, Col, Button, } from 'antd-mobile';
 
 
