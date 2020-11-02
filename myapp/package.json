@@ -5,12 +5,14 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "@babel/plugin-proposal-decorators": "^7.12.1",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.7.3",
     "antd-mobile": "^2.3.4",
     "axios": "^0.21.0",
+    "babel-loader": "^8.1.0",
     "crypto-js": "^4.0.0",
     "node-sass": "^4.14.1",
     "rc-form": "^2.4.11",
@@ -19,6 +21,7 @@
     "react-redux": "^7.2.2",
     "react-scripts": "3.4.4",
     "redux": "^4.0.5",
+    "swiper": "^6.3.4",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -51,8 +54,13 @@
     "react-app-rewired": "^2.1.6",
     "react-router-dom": "^5.2.0"
   },
+<<<<<<< HEAD
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "config-overrides.js",
   "author": "",
   "license": "ISC"
+=======
+  "main": "index.js",
+  "license": "MIT"
+>>>>>>> 200739d18e0c41f266130819c4c39c96805892ad
 }

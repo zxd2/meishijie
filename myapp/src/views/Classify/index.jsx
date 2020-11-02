@@ -9,6 +9,7 @@ import request from '../../utils/request'
 const Classify = () => {
     const [datalist, changeData] = useState([])
     let [listChild, changeChild] = useState([])
+    let [current, changeCurrent] = useState(false)
     /* 
     ["实用分类", "每日三餐", "主食", "家常菜谱", "中华菜系", "各地小吃", "外国菜谱", "烘焙", "人群", "厨具", "场景", "疾病调理", "脏腑调理", "功能性调理", "工艺", "时间"]
     */
@@ -20,7 +21,12 @@ const Classify = () => {
     //请求第一页的数据
     useLayoutEffect(function () {
         changelist('实用分类')
+        // changeCurrent(true)
     }, [])
+
+    //点击该分类时的背景颜色
+    // let current = false
+
     //请求列表的数据
     useEffect(async function () {
         try {
@@ -38,8 +44,11 @@ const Classify = () => {
         } catch (err) {
             console.log("err", err)
         }
+        changeCurrent(true)
+        // current = true
     }, [])
     console.log(datalist, "datalist")
+    // current = false
     //请求列表的小数据
     const changelist = useCallback(async function (item) {
         try {
@@ -59,9 +68,10 @@ const Classify = () => {
         } catch (err) {
             console.log("err", err)
         }
+        changeCurrent(true)
     }, []);
     console.log(listChild, "listChild")
-
+    console.log(current, "current")
 
     //路由跳转
     const history = useHistory();
@@ -85,9 +95,12 @@ const Classify = () => {
                 //         multipleLine
                 //     >Category</List.Item>);
                 // }
-                return (<List.Item key={index} style={{ fontSize: 12 + "px" }}
+                return (<List.Item key={index} style={{ fontSize: 12 + "px", backgroundColor: current ? "#efeff4" : "#fff" }}
                     thumb={<i.icon style={{ fontSize: 25 + "px", color: "red" }} />}
-                    onClick={changelist.bind(null, (i.标题))}>{i.标题}</List.Item>);
+                    onClick={() => {
+                        changelist(i.标题)
+                        // changeCurrent(true)
+                    }}>{i.标题}</List.Item>);
             })}
     </List>);
     let docked = true;
