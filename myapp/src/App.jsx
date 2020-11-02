@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React from 'react';
-=======
 import React, { Suspense, lazy } from 'react';
->>>>>>> dev
 import { withRouter, useHistory, useLocation, useRouteMatch, useParams, Route, Switch, Redirect } from 'react-router-dom';
 import logo from '@/logo.svg';
 import './App.scss';
