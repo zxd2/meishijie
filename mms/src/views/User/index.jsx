@@ -25,18 +25,22 @@ const User = (props) => {
       console.log("err", err)
     }
   }, [])
-  console.log("data", data)
+
   //删除功能
   const delUser = async (id) => {
     try {
       const deldata = await request.delete('/user/del/' + id)
       console.log(deldata, "deldata")
+      console.log("id", id)
+      console.log("data", data)
       if (deldata.data.flag) {
         let newData = data.filter(item => {
-          item._id !== id
+          return item._id !== id
         })
         changeData(newData)
         // data = newData
+        console.log("newData", newData)
+
       }
     } catch (err) {
       console.log("err", err)
@@ -49,7 +53,7 @@ const User = (props) => {
         params: {
           page: 1,
           pagesize: 20,
-          search: { "": value }
+          search: { "name": value }
         }
       })
       if (p.data.flag) {
@@ -63,10 +67,10 @@ const User = (props) => {
 
   const { Search } = Input;
   const { Column, ColumnGroup } = Table;
-  // const onSearch = value => {
-  //   console.log(value)
-  //   fetchall(value)
-  // };
+  const onSearch = value => {
+    console.log(value)
+    fetchall(value)
+  };
   return (
     <div>
       <Search
@@ -76,7 +80,7 @@ const User = (props) => {
         enterButton="查询"
         size="large"
         // onChange
-        onSearch={(value) => { fetchall(value) }}
+        onSearch={onSearch}
       />
       <Button type="primary" className="btn1">
         重置

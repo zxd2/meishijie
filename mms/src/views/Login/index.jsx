@@ -79,7 +79,7 @@ let Login = (props) => {
             }
             console.log('targetUrl', targetUrl)
             props.history.push({
-                pathname: targetUrl || '/home'
+                pathname: targetUrl || '/home/user'
             })
         } else {
             message.error('用户名或密码错误')
@@ -122,7 +122,7 @@ let Login = (props) => {
 
                 <Form.Item {...tailLayout}>
                     <Button type="primary" htmlType="submit" style={{ marginRight: "20px" }} onClick={() => {
-                        props.history.push('/login')
+                        props.history.push('/reg')
                     }}>
                         注册
             </Button>
