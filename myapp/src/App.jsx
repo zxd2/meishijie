@@ -1,9 +1,28 @@
+<<<<<<< HEAD
 import React from 'react';
+=======
+import React, { Suspense, lazy } from 'react';
+>>>>>>> dev
 import { withRouter, useHistory, useLocation, useRouteMatch, useParams, Route, Switch, Redirect } from 'react-router-dom';
 import logo from '@/logo.svg';
 import './App.scss';
 import "./common/reset.css"
+const Home = lazy(() => import("./views/Home"));
+const Mine = lazy(() => import("./views/Mine"));
+const Login = lazy(() => import("./views/Login"));
+const Menua = lazy(() => import("./views/Menua"));
+const Reg = lazy(() => import("./views/Reg"));
+const Type = lazy(() => import("./views/Type"));
+const Video = lazy(() => import("./views/Video"));
+const Classify = lazy(() => import("./views/Classify"));
+const Detail = lazy(() => import("./views/Detail"));
+const Msg = lazy(() => import("./views/Mine/msg"));
+const Issue = lazy(() => import("./views/Mine/issue"));
+const Collection = lazy(() => import("./views/Mine/collection"));
+const Our = lazy(() => import("./views/Mine/our"));
+const Shop = lazy(() => import("./views/Mine/shop"));
 
+<<<<<<< HEAD
 import Home from '../src/views/Home'
 import Login from '../src/views/Login'
 import Menua from '../src/views/Menua/index'
@@ -12,7 +31,10 @@ import Reg from '../src/views/Reg'
 import Type from '../src/views/Type'
 import Video from '../src/views/Video'
 import Classify from '../src/views/classify/classify'
+=======
+>>>>>>> dev
 import { Layout, Menu, Row, Col, Button, } from 'antd-mobile';
+
 
 import 'antd-mobile/dist/antd-mobile.css';
 // console.log(logo)
@@ -62,6 +84,7 @@ function App(props) {
       name: 'mine',
       component: Mine,
 
+<<<<<<< HEAD
     },
     {
       text: '分类',
@@ -77,6 +100,9 @@ function App(props) {
   //   current = key
   // }
   
+=======
+
+>>>>>>> dev
   return (
     <div className="App">
       {/* <Menu mode="horizontal" onClick={changeMenu} selectedKeys={[current]}>
@@ -94,26 +120,36 @@ function App(props) {
         onChange={this.onChange}
         height={document.documentElement.clientHeight * 0.6}
       /> */}
-      <Switch>
-        {/* {
+      <Suspense fallback={<div>loading...</div>}>
+        <Switch>
+          {/* {
           menu.map(item => <Route key={item.name} path={item.path} component={item.component} />)
         } */}
-        <Route path='/home' component={Home} />
-        <Route path='/menu' component={Menu} />
-        <Route path='/type' component={Type} />
-        <Route path='/video' component={Video} />
-        <Route path='/reg' component={Reg} />
-        <Route path='/login' component={Login} />
-        <Route path='/mine' component={Mine} />
-        <Route path="/notfound" render={() => <div>404</div>}></Route>
-        {/* 重定向 有3个属性from to  exact*/}
-        <Redirect from='/' to='/home' exact />
-        {/* 如果匹配不成功就跳到这里 */}
-        <Redirect to="/notfound" />
-      </Switch>
-    </div>
+          <Route path='/home' component={Home} />
+          <Route path='/menu' component={Menu} />
+          <Route path='/type' component={Type} />
+          <Route path='/video' component={Video} />
+          <Route path='/reg' component={Reg} />
+          <Route path='/login' component={Login} />
+          <Route path='/mine' component={Mine} />
+          <Route path='/shop' component={Shop} />
+          <Route path='/msg' component={Msg} />
+          <Route path='/issue' component={Issue} />
+          <Route path='/collection' component={Collection} />
+          <Route path='/our' component={Our} />
+          <Route path='/classify' component={Classify} />
+          <Route path='/detail' component={Detail} />
+          <Route path="/notfound" render={() => <div>404</div>}></Route>
+          {/* 重定向 有3个属性from to  exact*/}
+          <Redirect from='/' to='/home' exact />
+          {/* 如果匹配不成功就跳到这里 */}
+          <Redirect to="/notfound" />
+        </Switch>
+      </Suspense>
+    </div >
   );
 }
+<<<<<<< HEAD
 // goto = (path)=>{
 //     this.props.history.push(path);    
 // }   
@@ -273,4 +309,7 @@ function App(props) {
 //   }
 
 App=withRouter(App)
+=======
+// App=withRouter(App)
+>>>>>>> dev
 export default App

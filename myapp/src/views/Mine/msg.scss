@@ -1,0 +1,22 @@
+@import '../../common/sass/vw.scss';
+
+.am-navbar {
+    .am-navbar-right {
+        color: #ff5151;
+    }
+
+    .am-navbar-left {
+        color: #ff5151;
+        width: vw(66);
+        height: vw(44);
+        font-size: 15px;
+        padding: 0;
+        line-height: vw(45);
+
+
+        .am-navbar-title {
+            font-size: 18px;
+            color: #000;
+        }
+    }
+}
